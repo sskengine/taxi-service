@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.taxi.taxiservice.mapper.TaxiInfoMapper">
+    <resultMap id="taxiDriver"
+               type="ru.taxi.taxiservice.model.TaxiDriverInfoModel">
+        <id property="driverId" column="driver_id"/>
+        <result property="lastName" column="last_name"/>
+        <result property="firstName" column="first_name"/>
+        <result property="middleName" column="middle_name"/>
+        <result property="level" column="level"/>
+        <result property="carModel" column="car_model"/>
+        <result property="createDttm" column="create_dttm"/>
+    </resultMap>
+
+    <select id="getAllDrivers1" resultMap="taxiDriver">
+        SELECT driver_id, last_name, first_name, middle_name, level, car_model, create_dttm FROM taxi_drive_info
+    </select>
+
+    <select id="getCount1" resultType="java.lang.Integer">
+        select count(1) from taxi_drive_info
+    </select>
+</mapper>
